@@ -1,4 +1,4 @@
-package cn.itcast.bean;
+ï»¿package cn.itcast.bean;
 
 public class Worker {
 	private String name;
@@ -26,29 +26,34 @@ public class Worker {
 	}
 
 
-	//ÖØĞ´toString·½·¨
+	//é‡å†™toStringæ–¹æ³•
 	public String toString() {
 		return name + "," + age;
 	}
 
 
 	/*
-	Ô­Ê¼µÄequals·½·¨±È½ÏµÄ±£´æÄÚÈİµÄµØÖ·£¬Êµ¼ÊÉÏÃ»ÓĞ¶à´óÒâÒå¡£
+	åŸå§‹çš„equalsæ–¹æ³•æ¯”è¾ƒçš„ä¿å­˜å†…å®¹çš„åœ°å€ï¼Œå®é™…ä¸Šæ²¡æœ‰å¤šå¤§æ„ä¹‰ã€‚
 	  public boolean equals(Object obj) {
         	return (this == obj);
     	}
 	*/
 
-//	ÖØĞ´equals·½·¨£¬Ö÷ÒªÊÇ±È½ÏÄÚÈİÀïÃæµÄÇø±ğ£¨ÈÔ²»ÍíÉÏ£©
-	public boolean equals(Object obj) {	//Object obj = new Worker();
-		Worker w = (Worker)obj;  //ÏòÏÂ×ªĞÍµÃµ½WorkerµÄÊµÀı£¬²Å¿ÉÒÔÄÃµ½Êı¾İ½øĞĞ±È½Ï¡£
-		return this.name.equals(w.name) && this.age == w.age;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Worker worker = (Worker) o;
+
+		if (age != worker.age) return false;
+		return name.equals(worker.name);
 	}
 
-//	@Override
-//	public int hashCode() {
-//		int result = name != null ? name.hashCode() : 0;
-//		result = 31 * result + age;
-//		return result;
-//	}
+	@Override
+	public int hashCode() {
+		int result = name.hashCode();
+		result = 31 * result + age;
+		return result;
+	}
 }

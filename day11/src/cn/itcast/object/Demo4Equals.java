@@ -26,8 +26,12 @@ public class Demo4Equals {
 		//System.out.println(w2.equals(w3));
 
 		HashMap<Worker ,String> hashMap= new HashMap<>();
+		Worker w11 = new Worker("张三", 23);
+		System.out.println(w1.equals(w11));
+
 		hashMap.put(w1,"张三");
-		System.out.println( hashMap.get(new Worker("张三", 23)) );
+		System.out.println(hashMap.get(w1));
+		System.out.println(hashMap.get(w11));
 	}
 	/*
 	 *  public boolean equals(Object obj) {
